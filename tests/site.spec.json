@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://localhost:5174",
+  "baseUrl": "https://arclight-demo.vercel.app/",
   "tests": [
     {
       "name": "home page renders hero and stats",
