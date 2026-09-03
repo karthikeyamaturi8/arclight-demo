@@ -1,0 +1,252 @@
+:root {
+  --bg: #12131a;
+  --surface: #1b1d28;
+  --text: #ece9e2;
+  --text-dim: #9a9aa5;
+  --accent: #d6a756;
+  --accent-teal: #4fb0a5;
+  --border: #2b2d3a;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+.shell {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-mark {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--text);
+}
+
+.nav-link.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Main content */
+.main {
+  flex: 1;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.eyebrow-free-label {
+  color: var(--accent-teal);
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  margin: 0 0 1.25rem;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.35rem;
+  margin: 0 0 0.5rem;
+}
+
+.lede {
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  max-width: 60ch;
+  margin: 0 0 2rem;
+}
+
+.cta-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.3rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #1a1508;
+}
+
+.btn-ghost {
+  border-color: var(--border);
+  color: var(--text);
+  background: transparent;
+}
+
+.stat-row {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  padding: 1.75rem 0 0;
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+
+.stat-row li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stat-row strong {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+}
+
+.stat-row span {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* About */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+.about-grid article {
+  padding: 1.25rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.about-grid p {
+  color: var(--text-dim);
+  margin: 0;
+}
+
+/* Contact form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-width: 420px;
+}
+
+.contact-form label {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 0.75rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  padding: 0.6rem 0.7rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid var(--accent-teal);
+  outline-offset: 1px;
+}
+
+.contact-form button {
+  margin-top: 1.25rem;
+  align-self: flex-start;
+}
+
+.form-error {
+  color: #e08585;
+  font-size: 0.85rem;
+  margin: 0.5rem 0 0;
+}
+
+.form-success {
+  color: var(--accent-teal);
+  font-size: 1.05rem;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .about-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

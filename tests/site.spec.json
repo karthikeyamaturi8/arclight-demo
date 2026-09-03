@@ -1,0 +1,70 @@
+{
+  "baseUrl": "http://localhost:5174",
+  "tests": [
+    {
+      "name": "home page renders hero and stats",
+      "steps": [
+        { "action": "goto", "path": "/" },
+        { "action": "expectVisible", "selector": "[data-testid=page-home]" },
+        { "action": "expectText", "selector": "h1", "text": "interfaces that hold up" },
+        { "action": "expectCount", "selector": ".stat-row li", "count": 3 }
+      ]
+    },
+    {
+      "name": "nav links move between all three pages",
+      "steps": [
+        { "action": "goto", "path": "/" },
+        { "action": "click", "selector": "text=About" },
+        { "action": "expectURL", "path": "/about" },
+        { "action": "expectVisible", "selector": "[data-testid=page-about]" },
+        { "action": "click", "selector": "text=Contact" },
+        { "action": "expectURL", "path": "/contact" },
+        { "action": "expectVisible", "selector": "[data-testid=page-contact]" },
+        { "action": "click", "selector": ".nav-mark" },
+        { "action": "expectURL", "path": "/" }
+      ]
+    },
+    {
+      "name": "about page lists all three sections",
+      "steps": [
+        { "action": "goto", "path": "/about" },
+        { "action": "expectCount", "selector": ".about-grid article", "count": 3 },
+        { "action": "expectText", "selector": ".about-grid h2", "text": "What we do" }
+      ]
+    },
+    {
+      "name": "contact form rejects an empty submit",
+      "steps": [
+        { "action": "goto", "path": "/contact" },
+        { "action": "click", "selector": "[data-testid=submit-btn]" },
+        { "action": "expectVisible", "selector": "[data-testid=form-error]" },
+        { "action": "expectText", "selector": "[data-testid=form-error]", "text": "required" }
+      ]
+    },
+    {
+      "name": "contact form rejects a malformed email",
+      "steps": [
+        { "action": "goto", "path": "/contact" },
+        { "action": "fill", "selector": "[data-testid=input-name]", "value": "Priya" },
+        { "action": "fill", "selector": "[data-testid=input-email]", "value": "not-an-email" },
+        { "action": "fill", "selector": "[data-testid=input-message]", "value": "Hello there" },
+        { "action": "click", "selector": "[data-testid=submit-btn]" },
+        { "action": "expectVisible", "selector": "[data-testid=form-error]" },
+        { "action": "expectText", "selector": "[data-testid=form-error]", "text": "valid email" }
+      ]
+    },
+    {
+      "name": "contact form succeeds with valid input",
+      "steps": [
+        { "action": "goto", "path": "/contact" },
+        { "action": "fill", "selector": "[data-testid=input-name]", "value": "Priya" },
+        { "action": "fill", "selector": "[data-testid=input-email]", "value": "priya@example.com" },
+        { "action": "fill", "selector": "[data-testid=input-message]", "value": "Would love a quote." },
+        { "action": "click", "selector": "[data-testid=submit-btn]" },
+        { "action": "expectVisible", "selector": "[data-testid=form-success]" },
+        { "action": "expectText", "selector": "[data-testid=form-success]", "text": "Thanks, Priya" },
+        { "action": "expectHidden", "selector": "[data-testid=input-name]" }
+      ]
+    }
+  ]
+}
